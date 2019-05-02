@@ -1,13 +1,19 @@
 import React from 'react';
+import { HashRouter as Router } from 'react-router-dom';
 import './App.css';
+import routes from './routes';
+import Nav from './Components/Nav/Nav';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-       <h2><center>Src App</center></h2>
-      </header>
-    </div>
+    <Router>
+      <div>
+      <Nav />
+        <center>     
+       {routes}
+       </center>
+      </div>
+    </Router>
   );
 }
 
