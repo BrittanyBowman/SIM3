@@ -11,10 +11,43 @@ class Dash extends Component {
       myPosts: true,
       posts: [],
       loading: true
-    };
+    }
+    this.grabPosts = this.grabPosts.bind(this);
+    this.reset = this.reset.bind(this);
   }
+  componentDidMount(){
+    this.grabPosts();
+  }
+  //The endpoint should respond with the post title, image, and content for that post, as well as the username and profile picture of the post author (Hint: Use a join).
+  grabPosts(){
+    let {search, myPosts} = this.state;
+    let url = `/api/posts/${this.props.id}`;
+    if (myPosts && !search) {
+      url += '?mine=true';
+    } else if (!myPosts && search) {
+      url += `?search=${search}`;
+    } else if (myPosts && search) {
+      url += `?mine=true&search=${search}`;
+  }
+  axios.get(url).then(res=> {
+    setTimeout(() => this.setState({posts: res.data, loading: false, }), 500)
+  })
+}
+reset(){
+  let {myPosts} = this.state;
+  let url = `/api/posts/${this.props.id}`;
+  if (myPosts) {
+    url += '?mine=true';
+  }
+  axios.get(url)
+  .then(res => {
+    this.setState({ posts: res.data, loading: false, search: '' })
+  })
+}
+
   render() {
     let posts = this.state.posts.map(el => {
+      //Update where you are mapping over the list of posts in Dashboard to include a Link.
       return (
         <Link to={`/post/${el.post_id}`} key={el.post_id}>
           <div>
@@ -30,7 +63,7 @@ class Dash extends Component {
     return (
       <div className="Dash">
         <div>
-          <div>
+          <div><center>
             <input
               value={this.state.search}
               onChange={e => this.setState({ search: e.target.value })}
@@ -40,6 +73,7 @@ class Dash extends Component {
             <button onClick={this.reset} id="dash_reset">
               Reset
             </button>
+            </center>
           </div>
           <div>
             <p>My Posts</p>
@@ -57,5 +91,11 @@ class Dash extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  //Pull the user id off of Redux State.
+  return {
+    id: state.id
+  }
+}
 
-export default Dash;
+export default connect(mapStateToProps)(Dash);
