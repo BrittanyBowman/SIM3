@@ -21,11 +21,13 @@ class Auth extends Component {
   }
   login(){
     Axios.post('/api/login', this.state).then(res=>{
+      this.props.updateUser(res.data);
       this.props.history.push('/dash');
     })
   }
   register(){
     Axios.post('api/register', this.state).then(res=>{
+      this.props.updateUser(res.data);
       this.props.history.push('/dash');
     })
   }
@@ -39,12 +41,12 @@ class Auth extends Component {
         <p>Password:</p>
         <input value={this.state.password} onChange={(event) => this.handleUpdate('password', event)} />
         <p>
-        <button>Login</button>
-        <button>Register</button>
+        <button onClick={this.login}>Login</button>
+        <button onClick={this.register}>Register</button>
         </p>
       </div>
     )
   }
 }
 
-export default Auth;
+export default connect(null, { updateUser })(Auth);
