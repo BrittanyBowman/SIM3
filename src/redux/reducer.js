@@ -7,7 +7,7 @@ const initialState = {
 const UPDATE_USER = "UPDATE_USER";
 const LOGOUT = "LOGOUT";
 
-export function reducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   let { type, payload } = action;
   switch (type) {
     case UPDATE_USER:
