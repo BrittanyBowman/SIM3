@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
+import { connect } from 'react-redux';
+
+import { updateUser } from './../../redux/reducer';
 
 class Auth extends Component {
   constructor(props) {
@@ -7,12 +11,23 @@ class Auth extends Component {
       username: '',
       password: ''
     }
-    this.handleUpdate = this.handleUpdate.bind(this);
+    this.register = this.register.bind(this);
+    this.login = this.login.bind(this);
   }
 
-  handleUpdate(prop, event){
+  handleUpdate(prop, val){
     this.setState({
-      [prop]: event.target.value
+      [prop]: val
+    })
+  }
+  login(){
+    Axios.post('/api/login', this.state).then(res=>{
+      this.props.history.push('/dash');
+    })
+  }
+  register(){
+    Axios.post('api/register', this.state).then(res=>{
+      this.props.history.push('/dash');
     })
   }
 

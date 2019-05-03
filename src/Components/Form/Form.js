@@ -1,11 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-export default class Form extends Component {
+class Form extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     return (
-      <div>
-        FORM
-      </div>
-    )
+      <div>Form</div>
+    );
   }
 }
+
+export default Form;

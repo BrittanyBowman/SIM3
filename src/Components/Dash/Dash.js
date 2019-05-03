@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-export default class Dash extends Component {
+class Dash extends Component {
   render() {
     return (
-      <div>
-        DASH
-      </div>
-    )
+      <div>Dashboard</div>
+    );
   }
 }
+
+export default Dash;
