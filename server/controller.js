@@ -81,4 +81,16 @@ module.exports = {
           res.status(500).send(error);
         });
       },
+      getOne:  (req, res) => {
+        req.app
+          .get('db')
+          .get_post()
+          .then(post => {
+            res.status(200).send(post);
+          })
+          .catch(err => {
+            res.status(500).send(err);
+            console.log({ err });
+          });
+      }
 };

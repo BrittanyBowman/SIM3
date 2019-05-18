@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import { updateUser, logout } from './../../ducks/reducer';
+import { updateUser, logout } from '../../redux/reducer'
 
 class Nav extends Component {
   constructor(props) {
