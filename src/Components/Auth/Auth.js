@@ -20,13 +20,13 @@ class Auth extends Component {
     })
   }
   login(){
-    Axios.post('/api/login', this.state).then(res=>{
+    Axios.post('/api/auth/login', this.state).then(res=>{
       this.props.updateUser(res.data);
       this.props.history.push('/dash');
     })
   }
   register(){
-    Axios.post('api/register', this.state).then(res=>{
+    Axios.post('/api/auth/register', this.state).then(res=>{
       this.props.updateUser(res.data);
       this.props.history.push('/dash');
     })
@@ -50,20 +50,3 @@ class Auth extends Component {
 }
 
 export default connect(null, { updateUser })(Auth);
-
-// Write a POST endpoint in your server for registering.
-// The endpoint should pull the username and password off of the body.
-// The endpoint create a new user in the database.
-// The endpoint should respond with the newly created user.
-// Write a method in Auth that sends an axios request to the endpoint you just wrote.
-// The axios request should take the username and password off of state and put them in the body of the request.
-// Once the response comes back, navigate to the Dashboard view.
-// Set up the 'Register' button to fire the method.
-// Write a POST endpoint in your server for logging in.
-// The endpoint should pull the username and password off of the body.
-// The endpoint should pull the user with the matching username and password out of the database.
-// The endpoint should respond with the user.
-// Write a method in Auth that sends an axios request to the endpoint you just wrote.
-// The axios request should take the username and password off of state and put them in the body of the request.
-// Once the response comes back, navigate to the Dashboard view.
-// Set up the 'Login' button to fire the method.

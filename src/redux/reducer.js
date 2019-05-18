@@ -1,6 +1,5 @@
 const initialState = {
   username: "",
-  id: 0,
   profile_pic: ""
 };
 
@@ -15,7 +14,6 @@ export default function reducer(state = initialState, action) {
         ...state,
         username: payload.username,
         profilePic: payload.profile_pic,
-        id: payload.id
       };
     case LOGOUT:
       return initialState;
