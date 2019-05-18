@@ -108,6 +108,7 @@ app.get('/api/posts', controller.getAll);
 app.post('api/posts', controller.create);
 app.delete('/api/posts/:id', controller.delete);
 app.put('/api/posts/:id', controller.update);
+app.get('/api/auth/me', controller.login);
 
 //login endpoint, calls authenticate on passport. 
 app.post(`/api/auth/login`, passport.authenticate('login'), (req, res) => {

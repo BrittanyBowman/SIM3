@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class Dash extends Component {
@@ -30,13 +29,13 @@ class Dash extends Component {
     } else if (myPosts && search) {
       url += `?mine=true&search=${search}`;
   }
-  axios.get(url).then(res=> {
+  axios.get(url).then(res => {
     setTimeout(() => this.setState({posts: res.data, loading: false, }), 500)
   })
 }
 reset(){
   let {myPosts} = this.state;
-  let url = `/api/posts/${this.props.id}`;
+  let url = `/api/posts`;
   if (myPosts) {
     url += '?mine=true';
   }
@@ -92,11 +91,11 @@ reset(){
     );
   }
 }
-function mapStateToProps(state) {
-  //Pull the user id off of Redux State.
-  return {
-    id: state.id
-  }
-}
+// function mapStateToProps(state) {
+//   //Pull the user id off of Redux State.
+//   return {
+//     id: state.id
+//   }
+// }
 
-export default connect(mapStateToProps)(Dash);
+export default Dash;
