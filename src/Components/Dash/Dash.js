@@ -15,6 +15,7 @@ class Dash extends Component {
     this.grabPosts = this.grabPosts.bind(this);
     this.reset = this.reset.bind(this);
   }
+  //Lifecycle hook on load
   componentDidMount(){
     this.grabPosts();
   }

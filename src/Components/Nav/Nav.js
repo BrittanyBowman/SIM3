@@ -5,7 +5,7 @@ import { logout } from '../../redux/reducer';
 
 
 function Nav(props) {
-  console.log('nav', props);
+  // console.log('nav', props);
   if (props.location.pathname !=='/') {
     return <div>
       <h3>Nav</h3>

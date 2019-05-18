@@ -20,5 +20,6 @@ massive(DB_CON).then(dbInstance => {
 //endpoints
 app.post('/api/register', controller.register);
 app.post('/api/login', controller.login);
+app.get('/')
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

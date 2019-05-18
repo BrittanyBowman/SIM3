@@ -1,4 +1,4 @@
-import { Link, Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Auth from './Components/Auth/Auth';
 import Form from './Components/Form/Form';
 import Dash from './Components/Dash/Dash';
